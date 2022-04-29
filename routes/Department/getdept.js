@@ -3,7 +3,7 @@ const Router = express.Router();
 const mysqlConnection = require('../../Connection')
 
 ////////////////////////////////// Get Dept All ////////////////////////////////
-Router.get("/all",(req,res)=>{
+Router.get("/",(req,res)=>{
     var sql = "SELECT * FROM department";
     mysqlConnection.query(sql, (err,rows,fields)=>{
         if(!err){

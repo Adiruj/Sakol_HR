@@ -8,9 +8,7 @@ const port = process.env.PORT || 3020;
 
 var app = express();
 app.use(express.json()); 
-
 app.use(express.static('public'));
-
 app.use(morgan('dev')); // ให้ server(express) ใช้งานการ morgam module
 app.use(cors()); // ให้ server(express) ใช้งานการ cors module
 
