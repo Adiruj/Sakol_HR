@@ -3,7 +3,7 @@ const Router = express.Router();
 const mysqlConnection = require('../../Connection')
 
 ////////////////////////////////// Get Profile All ////////////////////////////////
-Router.get("/all",(req,res)=>{
+Router.get("/",(req,res)=>{
     var sql = "SELECT * FROM profile";
     mysqlConnection.query(sql, (err,rows,fields)=>{
         if(!err){
