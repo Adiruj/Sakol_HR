@@ -1,7 +1,6 @@
 const express = require('express')
 var http = require('http');
-const fs = require('fs')
-var https = require('https')
+//var https = require('https')
 const morgan = require('morgan');
 const cors = require('cors');
 const port = process.env.PORT || 3020;
@@ -11,6 +10,9 @@ app.use(express.json());
 app.use(express.static('public'));
 app.use(morgan('dev')); // ให้ server(express) ใช้งานการ morgam module
 app.use(cors()); // ให้ server(express) ใช้งานการ cors module
+
+
+
 
 /**********Create Server**************/
    var server = http.createServer(app);
@@ -29,6 +31,12 @@ app.use(cors()); // ให้ server(express) ใช้งานการ cors m
 server.listen(port, () => {
   console.log('Start server at port 3020.')
 })
+
+//*************************************************** Dowload Section ****************************************************//
+//==> Import Dowload
+const Dowload_Resume = require('./routes/Dowload_file/Dowloads');
+//==> Dowload
+app.use('/node/express/api/dowload/resume/', Dowload_Resume);
 
 
 //*************************************************** Profile Section ****************************************************//
@@ -117,6 +125,7 @@ const Getcandidate = require('./routes/Candidate/getcandidate');
 const Postcandidate = require('./routes/Candidate/postcandidate');
 const Putcandidate = require('./routes/Candidate/putcandidate');
 const Deletecandidate = require('./routes/Candidate/delcandidate');
+const Putstatuscandidate = require('./routes/Candidate/update_status');
 
 //==> GET Candidate
 app.use('/node/express/api/candidate/getcandidate/', Getcandidate);
@@ -129,5 +138,8 @@ app.use('/node/express/api/candidate/putcandidate/', Putcandidate);
 
 //==> Delete Candidate
 app.use('/node/express/api/candidate/delcandidate/', Deletecandidate);
+
+//==> Delete Candidate
+app.use('/node/express/api/candidate/putcandidate/status/', Putstatuscandidate);
 
 
